@@ -3,15 +3,24 @@
     <div class="open">
 
     <transition name="fade" mode="out-in" appear>
-        <div class="col-md-6">
+        <div class="col-md-10">
             <h4>Tasks List</h4>
             <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
                 <tbody>
                 <tr v-for="(task, index) in tasks" v-bind:key="index">
+                    <td>{{task.id}}</td>
                     <td>{{task.name}}</td>
-                    <td>{{task.description}} <span v-if="task.completed" class="badge badge-success">Done</span><span v-else class="badge badge-danger">Pending ...</span>
+                    <td>{{task.description}} <span v-if="task.completed" class="badge badge-success">Done</span>
                         </td>
-
+                    <td> Edit | Delete | Show </td>
 
                 </tr>
                 </tbody>
