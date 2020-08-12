@@ -17,6 +17,11 @@ export default new Router({
             path: "/new",
             name: "new",
             component: () => import("./components/NewTask")
-        }
+        },
+        {
+            path: "/show/:id",
+            name: "show",
+            component: () => import("./components/ShowTask")
+        },
     ]
 })
