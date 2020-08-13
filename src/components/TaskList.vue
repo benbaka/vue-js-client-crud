@@ -20,7 +20,7 @@
                     <td>{{task.name}}</td>
                     <td>{{task.description}} <span v-if="task.completed" class="badge badge-success">Done</span>
                         </td>
-                    <td><router-link :to="{name: 'show', params: {id: task.id}}"> Edit </router-link>  | Delete | Show </td>
+                    <td><router-link :to="{name: 'show', params: {id: task.id}}"> Show </router-link>  | Delete | Edit </td>
 
                 </tr>
                 </tbody>
