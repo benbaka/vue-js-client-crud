@@ -36,8 +36,9 @@
                             <br><br>
                             <div class="form-group">
                                 <label for="testAnswer">Test Question: <b>{{testQuestion}}</b></label>
-                                <input type="text" v-model="testAnswer" name="testAnswer" class="form-control" :class="{'is-invalid': $v.testAnswer.$error}"/>
+                                <input type="text" v-model="testAnswer" name="testAnswer" class="form-control" :class="{'animated headShake is-invalid': $v.testAnswer.$error}"/>
                                 <div v-if="!$v.testAnswer.required" class="invalid-feedback"><span>Evaluate the expression and put in the correct answer</span></div>
+                                <div v-if="!$v.testAnswer.integer" class="invalid-feedback"><span>Answer must be a number</span></div>
                             </div>
 
                             <div class="form-group float-right">
@@ -55,8 +56,18 @@
 <script>
 
     //import {required, email, minLength, sameAs} from "vuelidate/lib/validators"
-    import {required, minLength} from "vuelidate/lib/validators"
+    import {required, minLength, integer} from "vuelidate/lib/validators"
 
+
+    // Custom validations
+    function checkAnswer(){
+        if(parseInt(this.testAnswer)===5){
+            return true
+        }
+        else{
+            return false
+        }
+    }
     export default {
         name: "NewTask",
 
@@ -79,7 +90,7 @@
                 name: {required, minLength: minLength(2)},
                 description: {required, minLength: minLength(2)}
             },
-            testAnswer: {required}
+            testAnswer: {required, checkAnswer,  integer: integer}
         },
         methods: {
             handleSubmit(e){
@@ -91,7 +102,9 @@
                     return ;
                 }
                 alert("SUCCESS !! "+JSON.stringify(this.task));
-            }
+            },
+
+
         },
 
     }
