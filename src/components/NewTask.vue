@@ -9,7 +9,7 @@
                         <form @submit.prevent="handleSubmit">
                             <div class="form-group ">
                                 <label for="name"><b>Name</b></label>
-                                <input type="text" v-model="task.name" id="name" name="name" @keyup="$v.task.name.$touch()" class="form-control" :class="{ 'animated headShake  is-invalid':  $v.task.name.$error }" />
+                                <input type="text" v-model="task.name" id="name" name="name" v-on:input="$v.task.name.$touch()" class="form-control" :class="{ 'animated headShake  is-invalid':  $v.task.name.$error }" />
                                 <div v-if="!$v.task.name.required" class="invalid-feedback">
                                     <span>Name is required</span>
                                 </div>
@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name"><b>Description</b></label>
-                                <input type="text" v-model="task.description" name="name" @keyup="$v.task.description.$touch()" class="form-control" :class="{ 'animated headShake is-invalid':  $v.task.description.$error }" />
+                                <input type="text" v-model="task.description" name="name" v-on:input="$v.task.description.$touch()" class="form-control" :class="{ 'animated headShake is-invalid':  $v.task.description.$error }" />
                                 <div v-if=" !$v.task.description.required" class="invalid-feedback">
                                     <span>Description is required</span>
                                 </div>
@@ -36,7 +36,7 @@
                             <br><br>
                             <div class="form-group">
                                 <label for="testAnswer">Test Question: <b>{{testQuestion}}</b></label>
-                                <input type="text" v-model="testAnswer" name="testAnswer" @keyup="$v.testAnswer.$touch()" class="form-control" :class="{'animated headShake is-invalid': $v.testAnswer.$error}"/>
+                                <input type="text" v-model="testAnswer" name="testAnswer" v-on:input="$v.testAnswer.$touch()" class="form-control" :class="{'animated headShake is-invalid': $v.testAnswer.$error}"/>
                                 <div v-if="!$v.testAnswer.checkAnswer" class="invalid-feedback"><span>Evaluate the expression and put in the correct answer</span></div>
                                 <div v-if="!$v.testAnswer.integer" class="invalid-feedback"><span>Answer must be a number</span></div>
                             </div>
